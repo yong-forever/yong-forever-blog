@@ -11,12 +11,13 @@ export default {
   data () {
     return {
       bgImg: '',
-      opacity: 0.5
+      opacity: 0.5,
+      showTime: 15000,
     }
   },
   mounted () {
-    let { bodyBgImg, bodyBgImgOpacity } = this.$themeConfig
-
+    let { bodyBgImg, bodyBgImgOpacity , bodyBgImgTime} = this.$themeConfig
+    this.showTime=bodyBgImgTime
     if (type(bodyBgImg) === 'string') {
       this.bgImg = bodyBgImg
     } else if (type(bodyBgImg) === 'array') {
@@ -30,7 +31,7 @@ export default {
           count = 0
         }
         this.bgImg = bodyBgImg[count]
-      }, 15000);
+      }, this.showTime);
     }
 
     if (bodyBgImgOpacity !== undefined) {
